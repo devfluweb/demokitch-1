@@ -670,16 +670,15 @@ export default function MenuPage() {
         <MessageCircle className="w-7 h-7 text-white" />
       </a>
 
-      <Link href="/cart">
-        <button
-          className={`floating-btn cart-btn ${cartCount > 0 ? 'pulse' : ''}`}
-          title="View Cart"
-        >
-          <ShoppingCart className="w-7 h-7 text-white" />
-          {cartCount > 0 && (
-            <span className="cart-badge">{cartCount}</span>
-          )}
-        </button>
+      <Link 
+        href="/cart"
+        className={`floating-btn cart-btn ${cartCount > 0 ? 'pulse' : ''}`}
+        title="View Cart"
+      >
+        <ShoppingCart className="w-7 h-7 text-white" />
+        {cartCount > 0 && (
+          <span className="cart-badge">{cartCount}</span>
+        )}
       </Link>
     </div>
   );

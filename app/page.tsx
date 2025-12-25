@@ -238,43 +238,43 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-      <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-orange-500 via-red-500 to-pink-500">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
+      <section className="py-8 sm:py-12 px-4 bg-gradient-to-br from-orange-50 to-red-50">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent mb-3 sm:mb-4">
             Get in Touch
           </h2>
-          <p className="text-base sm:text-lg text-white/90 mb-8 sm:mb-12">
+          <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
             Have questions? We'd love to hear from you!
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-6 mb-10">
+          <div className="grid sm:grid-cols-3 gap-4 mb-6 sm:mb-8">
             <a 
               href="tel:9108695696"
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 border border-white/20"
+              className="bg-white rounded-xl p-4 hover:shadow-lg transition-all hover:scale-105 border border-orange-200"
             >
-              <Phone className="w-10 h-10 mx-auto mb-3 text-white" />
-              <h3 className="font-semibold text-white mb-2">Call Us</h3>
-              <p className="text-white/80 text-sm">9108695696</p>
+              <Phone className="w-8 h-8 mx-auto mb-2 text-orange-500" />
+              <h3 className="font-semibold text-gray-900 mb-1 text-sm">Call Us</h3>
+              <p className="text-gray-600 text-xs">9108695696</p>
             </a>
 
             <a 
               href="mailto:xxx@xxx.com"
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 border border-white/20"
+              className="bg-white rounded-xl p-4 hover:shadow-lg transition-all hover:scale-105 border border-orange-200"
             >
-              <Mail className="w-10 h-10 mx-auto mb-3 text-white" />
-              <h3 className="font-semibold text-white mb-2">Email Us</h3>
-              <p className="text-white/80 text-sm">xxx@xxx.com</p>
+              <Mail className="w-8 h-8 mx-auto mb-2 text-orange-500" />
+              <h3 className="font-semibold text-gray-900 mb-1 text-sm">Email Us</h3>
+              <p className="text-gray-600 text-xs">xxx@xxx.com</p>
             </a>
 
             <a 
               href="https://instagram.com/xxx"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 border border-white/20"
+              className="bg-white rounded-xl p-4 hover:shadow-lg transition-all hover:scale-105 border border-orange-200"
             >
-              <Instagram className="w-10 h-10 mx-auto mb-3 text-white" />
-              <h3 className="font-semibold text-white mb-2">Instagram</h3>
-              <p className="text-white/80 text-sm">@xxx</p>
+              <Instagram className="w-8 h-8 mx-auto mb-2 text-orange-500" />
+              <h3 className="font-semibold text-gray-900 mb-1 text-sm">Instagram</h3>
+              <p className="text-gray-600 text-xs">@xxx</p>
             </a>
           </div>
 
@@ -282,9 +282,9 @@ export default function Home() {
             href="https://wa.me/919108695696"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all hover:scale-105"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full font-semibold text-base hover:shadow-xl transition-all hover:scale-105"
           >
-            <MessageCircle size={24} />
+            <MessageCircle size={20} />
             Contact Us Now
           </a>
         </div>

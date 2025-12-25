@@ -218,8 +218,8 @@ export default function CartPage() {
               <h2 className="text-xl font-bold text-gray-900 mb-4">Order Items</h2>
               
               {cartItems.map(item => (
-                <div key={item.id} className="flex gap-4 p-4 border border-gray-200 rounded-xl hover:border-orange-300 transition-colors">
-                  <div className="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                <div key={item.id} className="flex gap-4 p-4 border-2 border-gray-200 rounded-xl hover:border-orange-400 transition-colors bg-gray-50">
+                  <div className="relative w-28 h-28 rounded-lg overflow-hidden flex-shrink-0 shadow-md">
                     <Image
                       src={item.image}
                       alt={item.name}
@@ -229,42 +229,45 @@ export default function CartPage() {
                   </div>
                   
                   <div className="flex-1">
-                    <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-start justify-between mb-3">
                       <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className={`w-3 h-3 rounded-sm border-2 ${item.isVeg ? 'border-green-600' : 'border-red-600'} flex items-center justify-center`}>
-                            <span className={`w-1.5 h-1.5 rounded-full ${item.isVeg ? 'bg-green-600' : 'bg-red-600'}`}></span>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className={`w-4 h-4 rounded-sm border-2 ${item.isVeg ? 'border-green-600' : 'border-red-600'} flex items-center justify-center`}>
+                            <span className={`w-2 h-2 rounded-full ${item.isVeg ? 'bg-green-600' : 'bg-red-600'}`}></span>
                           </span>
-                          <h3 className="font-semibold text-gray-900">{item.name}</h3>
+                          <h3 className="font-bold text-lg text-gray-900">{item.name}</h3>
                         </div>
-                        <p className="text-orange-600 font-bold">₹{item.price}</p>
+                        <p className="text-orange-600 font-bold text-lg">₹{item.price} each</p>
                       </div>
                       
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors"
+                        className="text-red-500 hover:text-red-700 hover:bg-red-100 p-2 rounded-lg transition-colors"
                       >
-                        <Trash2 size={18} />
+                        <Trash2 size={20} />
                       </button>
                     </div>
                     
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-3 bg-white rounded-xl p-2 shadow-md border-2 border-orange-200">
                         <button
                           onClick={() => updateQuantity(item.id, -1)}
-                          className="w-8 h-8 flex items-center justify-center bg-white rounded-md hover:bg-orange-500 hover:text-white transition-colors"
+                          className="w-9 h-9 flex items-center justify-center bg-orange-100 rounded-lg hover:bg-orange-500 hover:text-white transition-colors font-bold"
                         >
-                          <Minus size={16} />
+                          <Minus size={18} />
                         </button>
-                        <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                        <span className="w-12 text-center font-bold text-xl text-orange-600">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.id, 1)}
-                          className="w-8 h-8 flex items-center justify-center bg-white rounded-md hover:bg-orange-500 hover:text-white transition-colors"
+                          className="w-9 h-9 flex items-center justify-center bg-orange-100 rounded-lg hover:bg-orange-500 hover:text-white transition-colors font-bold"
                         >
-                          <Plus size={16} />
+                          <Plus size={18} />
                         </button>
                       </div>
-                      <span className="text-gray-600 font-medium">= ₹{item.price * item.quantity}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-gray-500 font-medium">=</span>
+                        <span className="text-gray-900 font-bold text-xl">₹{item.price * item.quantity}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
