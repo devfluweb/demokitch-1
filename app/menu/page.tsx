@@ -559,7 +559,14 @@ export default function MenuPage() {
               {/* Category Items - Collapsible */}
               {expandedCategories.has(categoryIndex) && (
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
-                  {category.items.map((item, itemIndex) => {
+                  {category.items
+                    .filter(item => {
+                      if (filter === 'all') return true;
+                      if (filter === 'veg') return item.isVeg === true;
+                      if (filter === 'nonveg') return item.isVeg === false;
+                      return true;
+                    })
+                    .map((item, itemIndex) => {
                     const itemId = `item-${categoryIndex}-${itemIndex}`;
                     const quantity = itemQuantities[itemId] || 0;
                     const isExpanded = expandedItems.has(itemId);

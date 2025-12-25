@@ -2,11 +2,13 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChefHat, MapPin, Clock, Phone, Instagram, MessageCircle, Mail } from 'lucide-react';
-import { useEffect } from 'react';
+import { ChefHat, MapPin, Clock, Phone, Instagram, MessageCircle, Mail, Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import './animations.css';
 
 export default function Home() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
@@ -65,10 +67,47 @@ export default function Home() {
             <Link href="/cart" className="text-gray-700 hover:text-orange-500 font-medium transition-colors">Cart</Link>
           </nav>
           
-          <Link href="/menu" className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105">
-            Order Now
-          </Link>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 hover:bg-orange-50 rounded-lg transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-gray-700" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-700" />
+            )}
+          </button>
         </div>
+        
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+            <nav className="flex flex-col py-4">
+              <Link
+                href="/"
+                className="px-6 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-500 font-medium transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                href="/menu"
+                className="px-6 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-500 font-medium transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Menu
+              </Link>
+              <Link
+                href="/cart"
+                className="px-6 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-500 font-medium transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Cart
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
