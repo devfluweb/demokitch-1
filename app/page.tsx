@@ -116,22 +116,12 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Info Cards - Vertical Layout */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto lg:mx-0">
-              <div className="bg-white rounded-2xl p-4 shadow-lg border border-orange-100 text-center">
-                <Clock className="w-8 h-8 text-orange-500 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-gray-900">Open Daily</p>
+            {/* Timing Info */}
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-50 to-red-50 border-2 border-orange-200 rounded-full px-6 py-3 shadow-md">
+              <Clock className="w-6 h-6 text-orange-500" />
+              <div>
+                <p className="text-sm font-bold text-gray-900">Open Daily</p>
                 <p className="text-xs text-gray-600">10 AM - 10 PM</p>
-              </div>
-              <div className="bg-white rounded-2xl p-4 shadow-lg border border-orange-100 text-center">
-                <Phone className="w-8 h-8 text-orange-500 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-gray-900">Call Us</p>
-                <p className="text-xs text-gray-600">9108695696</p>
-              </div>
-              <div className="bg-white rounded-2xl p-4 shadow-lg border border-orange-100 text-center">
-                <MessageCircle className="w-8 h-8 text-orange-500 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-gray-900">WhatsApp</p>
-                <p className="text-xs text-gray-600">Order Now</p>
               </div>
             </div>
           </div>
@@ -146,64 +136,6 @@ export default function Home() {
                 className="object-cover"
                 priority
               />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-12 bg-gradient-to-r from-orange-500 to-red-500">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-            <div>
-              <p className="text-4xl font-bold mb-2">500+</p>
-              <p className="text-sm opacity-90">Happy Customers</p>
-            </div>
-            <div>
-              <p className="text-4xl font-bold mb-2">25+</p>
-              <p className="text-sm opacity-90">Menu Items</p>
-            </div>
-            <div>
-              <p className="text-4xl font-bold mb-2">4.8⭐</p>
-              <p className="text-sm opacity-90">Average Rating</p>
-            </div>
-            <div>
-              <p className="text-4xl font-bold mb-2">30min</p>
-              <p className="text-sm opacity-90">Delivery Time</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
-            Why Choose Demo Fork?
-          </h2>
-          <p className="text-center text-gray-600 mb-12">Quality food, faster delivery, better experience</p>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                <ChefHat className="w-8 h-8 text-orange-500" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Expert Chefs</h3>
-              <p className="text-gray-600">Prepared by experienced chefs with authentic recipes and premium ingredients</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                <Clock className="w-8 h-8 text-orange-500" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Fast Delivery</h3>
-              <p className="text-gray-600">Hot and fresh food delivered to your doorstep within 30 minutes</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                <Phone className="w-8 h-8 text-orange-500" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
-              <p className="text-gray-600">Always available to take your orders and answer your questions</p>
             </div>
           </div>
         </div>
@@ -260,6 +192,60 @@ export default function Home() {
             >
               Explore Full Menu
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12 bg-gradient-to-r from-orange-500 to-red-500">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center text-white">
+            <div>
+              <p className="text-4xl font-bold mb-2">25+</p>
+              <p className="text-sm opacity-90">Menu Items</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold mb-2">4.8⭐</p>
+              <p className="text-sm opacity-90">Average Rating</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold mb-2">30min</p>
+              <p className="text-sm opacity-90">Delivery Time</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
+            Why Choose Demo Fork?
+          </h2>
+          <p className="text-center text-gray-600 mb-12">Quality food, faster delivery, better experience</p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <ChefHat className="w-8 h-8 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Expert Chefs</h3>
+              <p className="text-gray-600">Prepared by experienced chefs with authentic recipes and premium ingredients</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <Clock className="w-8 h-8 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Fast Delivery</h3>
+              <p className="text-gray-600">Hot and fresh food delivered to your doorstep within 30 minutes</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <Phone className="w-8 h-8 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
+              <p className="text-gray-600">Always available to take your orders and answer your questions</p>
+            </div>
           </div>
         </div>
       </section>
