@@ -244,7 +244,7 @@ export default function Home() {
             Get in Touch
           </h2>
           <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
-            Have questions? We'd love to hear from you!
+            Have questions? We&apos;d love to hear from you!
           </p>
 
           <div className="grid sm:grid-cols-3 gap-4 mb-6 sm:mb-8">
