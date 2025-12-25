@@ -7,7 +7,7 @@ A modern, beautiful demo website for Demo Fork Cloud Kitchen in Moodabidri, buil
 - 🎨 Modern, responsive design with smooth animations
 - 🍽️ Hero section with compelling call-to-action
 - 📸 Photo gallery showcasing special dishes
-- 📱 Instagram integration placeholder
+- 📱 Instagram integration placeholder 
 - 🍕 Comprehensive menu page with categories
 - ⚡ Fast and optimized with Next.js 15
 - 🎯 Built for demo/presentation purposes
