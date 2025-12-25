@@ -64,17 +64,44 @@ export default function CartPage() {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          const locationLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
-          setAddress(`${address}\nLocation: ${locationLink}`);
+          const coords = `Lat: ${latitude.toFixed(6)}, Long: ${longitude.toFixed(6)}`;
+          const mapsLink = `https://maps.google.com/?q=${latitude},${longitude}`;
+          
+          // Add coordinates and map link to address
+          const locationText = `\n\n📍 Current Location:\n${coords}\nMap: ${mapsLink}`;
+          setAddress(prev => prev + locationText);
           setIsLoadingLocation(false);
+          alert('Location added to address! You can edit if needed.');
         },
         (error) => {
-          alert('Unable to get location. Please enter manually.');
+          console.error('Geolocation error:', error);
+          let errorMsg = 'Unable to get location. ';
+          
+          switch(error.code) {
+            case error.PERMISSION_DENIED:
+              errorMsg += 'Please allow location access in your browser settings.';
+              break;
+            case error.POSITION_UNAVAILABLE:
+              errorMsg += 'Location information unavailable.';
+              break;
+            case error.TIMEOUT:
+              errorMsg += 'Location request timed out.';
+              break;
+            default:
+              errorMsg += 'An unknown error occurred.';
+          }
+          
+          alert(errorMsg);
           setIsLoadingLocation(false);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
         }
       );
     } else {
-      alert('Geolocation is not supported by your browser.');
+      alert('Geolocation is not supported by your browser. Please enter your address manually.');
       setIsLoadingLocation(false);
     }
   };
@@ -171,16 +198,16 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 py-4 sm:py-8 px-2 sm:px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <Link href="/menu" className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 mb-6 transition-colors">
+        <Link href="/menu" className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 mb-4 sm:mb-6 transition-colors px-2">
           <ArrowLeft size={20} />
           <span className="font-medium">Back to Menu</span>
         </Link>
 
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Your Cart</h1>
-        <p className="text-gray-600 mb-8">Review your order and complete checkout</p>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 px-2">Your Cart</h1>
+        <p className="text-gray-600 mb-6 sm:mb-8 px-2">Review your order and complete checkout</p>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left Column - Cart Items */}
@@ -366,27 +393,38 @@ export default function CartPage() {
             </div>
 
             {/* Order Summary */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
+            <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 border-2 border-orange-100">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <ShoppingBag className="w-5 h-5 text-orange-500" />
+                Order Summary
+              </h2>
               
-              <div className="space-y-3 mb-6">
-                <div className="flex justify-between text-gray-600">
-                  <span>Subtotal ({cartItems.reduce((sum, item) => sum + item.quantity, 0)} items)</span>
-                  <span className="font-medium">₹{subtotal}</span>
+              <div className="space-y-4 mb-6">
+                <div className="flex justify-between items-center text-gray-700">
+                  <span className="text-sm sm:text-base">Subtotal ({cartItems.reduce((sum, item) => sum + item.quantity, 0)} items)</span>
+                  <span className="font-bold text-lg">₹{subtotal}</span>
                 </div>
                 
-                <div className="flex justify-between text-gray-600">
-                  <span>Delivery Fee</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm sm:text-base text-gray-700">Delivery Fee</span>
                   {deliveryFee === 0 ? (
-                    <span className="font-medium text-green-600">FREE</span>
+                    <div className="text-right">
+                      <span className="font-bold text-lg text-green-600">FREE</span>
+                      <p className="text-xs text-green-600">Saved ₹40!</p>
+                    </div>
                   ) : (
-                    <span className="font-medium">₹{deliveryFee}</span>
+                    <span className="font-bold text-lg text-gray-900">₹{deliveryFee}</span>
                   )}
                 </div>
                 
-                <div className="border-t border-gray-200 pt-3 flex justify-between text-lg font-bold text-gray-900">
-                  <span>Total</span>
-                  <span className="text-orange-600">₹{total}</span>
+                <div className="border-t-2 border-orange-200 pt-4 flex justify-between items-center">
+                  <span className="text-lg sm:text-xl font-bold text-gray-900">Order Total</span>
+                  <div className="text-right">
+                    <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">₹{total}</span>
+                    {deliveryFee === 0 && (
+                      <p className="text-xs text-green-600 font-medium">✓ Free delivery applied</p>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -394,7 +432,7 @@ export default function CartPage() {
               <div className="space-y-3">
                 <button
                   onClick={handleOrderNow}
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 sm:py-4 rounded-xl font-semibold hover:shadow-lg transition-all hover:scale-[1.02] flex items-center justify-center gap-2 text-sm sm:text-base"
                 >
                   <MessageCircle size={20} />
                   Order via WhatsApp
@@ -402,11 +440,17 @@ export default function CartPage() {
 
                 <button
                   onClick={handlePayNow}
-                  className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 sm:py-4 rounded-xl font-semibold hover:shadow-lg transition-all hover:scale-[1.02] flex items-center justify-center gap-2 text-sm sm:text-base"
                 >
                   <CreditCard size={20} />
                   Pay Now (UPI)
                 </button>
+              </div>
+
+              <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                <p className="text-xs text-blue-800">
+                  <strong>Note:</strong> Some UPI apps may block direct payment links. If payment fails, please use WhatsApp order option or scan QR code after placing order.
+                </p>
               </div>
 
               <p className="text-xs text-gray-500 text-center mt-4">

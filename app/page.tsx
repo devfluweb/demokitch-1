@@ -48,7 +48,27 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
+    <div className="min-h-screen bg-white">
+      {/* Fixed Header */}
+      <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-md z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <ChefHat className="w-8 h-8 text-orange-500" />
+            <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Demo Fork</span>
+          </Link>
+          
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="/" className="text-gray-700 hover:text-orange-500 font-medium transition-colors">Home</Link>
+            <Link href="/menu" className="text-gray-700 hover:text-orange-500 font-medium transition-colors">Menu</Link>
+            <Link href="/cart" className="text-gray-700 hover:text-orange-500 font-medium transition-colors">Cart</Link>
+          </nav>
+          
+          <Link href="/menu" className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105">
+            Order Now
+          </Link>
+        </div>
+      </header>
+
       <style jsx global>{`
         .fade-in-scroll {
           opacity: 0;
@@ -88,46 +108,152 @@ export default function Home() {
       `}</style>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-12 sm:py-16">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80"
             alt="Delicious food"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-10"
             priority
           />
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-6xl mx-auto w-full">
-          <div className="flex justify-center mb-4 sm:mb-6">
-            <ChefHat className="w-16 h-16 sm:w-20 sm:h-20 text-orange-500" />
-          </div>
-          
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent mb-4 sm:mb-6 tracking-tight">
-            Demo Fork
-          </h1>
-          
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 mb-6 sm:mb-8 font-light">
-            Cloud Kitchen Excellence
-          </p>
-
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-            Experience culinary perfection from our cloud kitchen. 
-            Fresh ingredients, authentic flavors, delivered right to your doorstep.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
-            <Link 
-              href="/menu"
-              className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white px-8 sm:px-12 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:scale-105 shadow-lg"
-            >
-              View Menu
-            </Link>
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Main Content */}
+          <div className="text-center lg:text-left">
+            <div className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              🔥 Premium Cloud Kitchen
+            </div>
             
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-gray-700 text-sm sm:text-base">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              Delicious Food
+              <span className="block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Delivered Fresh</span>
+            </h1>
+            
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
+              Experience culinary perfection from our cloud kitchen. Fresh ingredients, authentic flavors, delivered right to your doorstep.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <Link 
+                href="/menu"
+                className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl text-center"
+              >
+                View Menu
+              </Link>
+              <a
+                href="tel:9108695696"
+                className="bg-white border-2 border-orange-500 text-orange-500 px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 shadow-md hover:bg-orange-50 text-center"
+              >
+                Call Now
+              </a>
+            </div>
+
+            {/* Info Cards - Vertical Layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto lg:mx-0">
+              <div className="bg-white rounded-2xl p-4 shadow-lg border border-orange-100 text-center">
+                <Clock className="w-8 h-8 text-orange-500 mx-auto mb-2" />
+                <p className="text-sm font-semibold text-gray-900">Open Daily</p>
+                <p className="text-xs text-gray-600">10 AM - 10 PM</p>
+              </div>
+              <div className="bg-white rounded-2xl p-4 shadow-lg border border-orange-100 text-center">
+                <Phone className="w-8 h-8 text-orange-500 mx-auto mb-2" />
+                <p className="text-sm font-semibold text-gray-900">Call Us</p>
+                <p className="text-xs text-gray-600">9108695696</p>
+              </div>
+              <div className="bg-white rounded-2xl p-4 shadow-lg border border-orange-100 text-center">
+                <MessageCircle className="w-8 h-8 text-orange-500 mx-auto mb-2" />
+                <p className="text-sm font-semibold text-gray-900">WhatsApp</p>
+                <p className="text-xs text-gray-600">Order Now</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Featured Image */}
+          <div className="hidden lg:block">
+            <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
+                alt="Delicious food"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12 bg-gradient-to-r from-orange-500 to-red-500">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+            <div>
+              <p className="text-4xl font-bold mb-2">500+</p>
+              <p className="text-sm opacity-90">Happy Customers</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold mb-2">25+</p>
+              <p className="text-sm opacity-90">Menu Items</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold mb-2">4.8⭐</p>
+              <p className="text-sm opacity-90">Average Rating</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold mb-2">30min</p>
+              <p className="text-sm opacity-90">Delivery Time</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
+            Why Choose Demo Fork?
+          </h2>
+          <p className="text-center text-gray-600 mb-12">Quality food, faster delivery, better experience</p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <ChefHat className="w-8 h-8 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Expert Chefs</h3>
+              <p className="text-gray-600">Prepared by experienced chefs with authentic recipes and premium ingredients</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <Clock className="w-8 h-8 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Fast Delivery</h3>
+              <p className="text-gray-600">Hot and fresh food delivered to your doorstep within 30 minutes</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <Phone className="w-8 h-8 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
+              <p className="text-gray-600">Always available to take your orders and answer your questions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Specials Section */}
+      <section className="py-16 sm:py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center text-gray-900 mb-3 sm:mb-4 fade-in-scroll">
+            Our Specials
+          </h2>
+          <p className="text-center text-gray-600 text-base sm:text-lg mb-8 sm:mb-12 fade-in-scroll">
+            Handcrafted dishes that define excellence
+          </p>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
                 <span>10 AM - 10 PM</span>
