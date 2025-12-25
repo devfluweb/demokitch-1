@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChefHat, MapPin, Clock, Phone, Instagram, MessageCircle, Mail } from 'lucide-react';
 import { useEffect } from 'react';
+import './animations.css';
 
 export default function Home() {
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function Home() {
 
     return () => observer.disconnect();
   }, []);
+
   const specials = [
     {
       name: "Butter Chicken",
@@ -68,44 +70,6 @@ export default function Home() {
           </Link>
         </div>
       </header>
-
-      <style jsx global>{`
-        .fade-in-scroll {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        
-        .fade-in-visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        
-        .stagger-1 {
-          transition-delay: 0.1s;
-        }
-        
-        .stagger-2 {
-          transition-delay: 0.2s;
-        }
-        
-        .stagger-3 {
-          transition-delay: 0.3s;
-        }
-        
-        .stagger-4 {
-          transition-delay: 0.4s;
-        }
-        
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -241,36 +205,6 @@ export default function Home() {
               <h3 className="text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
               <p className="text-gray-600">Always available to take your orders and answer your questions</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Specials Section */}
-      <section className="py-16 sm:py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center text-gray-900 mb-3 sm:mb-4 fade-in-scroll">
-            Our Specials
-          </h2>
-          <p className="text-center text-gray-600 text-base sm:text-lg mb-8 sm:mb-12 fade-in-scroll">
-            Handcrafted dishes that define excellence
-          </p>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
-                <span>10 AM - 10 PM</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
-                <span className="hidden sm:inline">+91 XXXXX XXXXX</span>
-                <span className="sm:hidden">Call Us</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
-          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-3 bg-gray-400 rounded-full"></div>
           </div>
         </div>
       </section>
